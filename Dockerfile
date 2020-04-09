@@ -1,8 +1,10 @@
-FROM scratch
+## Buildstage ##
+FROM lsiobase/alpine:3.9 as buildstage
 
 # add local files
 COPY root/ /
 
+## Install dependencies ##
 RUN apk add --no-cache alsa-lib-dev \
     automake \
     autoconf \
@@ -56,9 +58,17 @@ RUN apk add --no-cache \
 	ffmpeg-dev \
 	py3-pybind11-dev
 	
+
+## Install Subsync ##
 RUN git clone -b '0.15' https://github.com/sc0ty/subsync.git /app/subsync
 WORKDIR /
 COPY app/ /app/
 WORKDIR /app/subsync
 RUN pip3 install -r /app/subsync/requirements.txt \
 	&& pip3 install .
+	
+## Single layer deployed image ##
+FROM scratch
+
+# Add files from buildstage
+COPY --from=buildstage /root-layer/ /
