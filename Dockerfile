@@ -74,4 +74,4 @@ RUN chmod +x /root-layer/app/subsync
 FROM scratch
 
 # Add files from buildstage
-COPY --from=buildstage /root-layer/app/subsync /app/subsync
+COPY --from=buildstage /root-layer/ /
