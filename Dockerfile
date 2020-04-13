@@ -1,9 +1,6 @@
 ## Buildstage ##
 FROM lsiobase/alpine:3.11 as buildstage
 
-# add local files
-COPY root/ /root-layer/
-
 ## Install dependencies ##
 RUN apk add --no-cache alsa-lib-dev \
     automake \
@@ -67,6 +64,11 @@ WORKDIR /root-layer/app/subsync
 RUN pip3 install -r /root-layer/app/subsync/requirements.txt \
 	&& pip3 install . \
 	&& apk add tar
+	
+# add local files
+COPY root/ /root-layer/
+
+RUN chmod +x /app/subsync
 	
 ## Single layer deployed image ##
 FROM scratch
