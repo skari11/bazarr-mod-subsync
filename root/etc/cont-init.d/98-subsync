@@ -3,3 +3,5 @@
 # permissions
 chown -R abc:abc \
 	/app/subsync
+
+apk add tar
