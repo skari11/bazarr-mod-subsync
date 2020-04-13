@@ -68,13 +68,13 @@ RUN pip3 install -r /root-layer/app/subsync/requirements.txt \
 # add local files
 COPY root/ /root-layer/
 
-RUN chmod +x /app/subsync
+RUN chmod +x /root-layer/app/subsync
 	
 ## Single layer deployed image ##
 FROM scratch
 
 # Add files from buildstage
-COPY --from=buildstage /root-layer/ /
+COPY --from=buildstage /root-layer/app/subsync /app/subsync
 RUN ls /root-layer
 RUN ls /root-layer/app
 RUN ls /root-layer/app/subsync
