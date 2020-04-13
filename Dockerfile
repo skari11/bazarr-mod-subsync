@@ -75,6 +75,3 @@ FROM scratch
 
 # Add files from buildstage
 COPY --from=buildstage /root-layer/app/subsync /app/subsync
-RUN ls /root-layer
-RUN ls /root-layer/app
-RUN ls /root-layer/app/subsync
