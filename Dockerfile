@@ -1,5 +1,5 @@
 ## Buildstage ##
-FROM lsiobase/alpine:3.9 as buildstage
+FROM lsiobase/alpine:3.11 as buildstage
 
 # add local files
 COPY root/ /
