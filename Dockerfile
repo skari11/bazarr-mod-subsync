@@ -65,7 +65,8 @@ WORKDIR /root-layer/
 COPY app/ /app/
 WORKDIR /root-layer/app/subsync
 RUN pip3 install -r /root-layer/app/subsync/requirements.txt \
-	&& pip3 install .
+	&& pip3 install . \
+	&& apk add tar
 	
 ## Single layer deployed image ##
 FROM scratch
