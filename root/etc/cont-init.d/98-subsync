@@ -4,4 +4,4 @@
 chown -R abc:abc \
 	/app/subsync
 
-apk add tar
+pip3 install /app/subsync/
