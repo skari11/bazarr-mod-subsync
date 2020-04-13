@@ -60,10 +60,10 @@ RUN apk add --no-cache \
 RUN git clone -b '0.15' https://github.com/sc0ty/subsync.git /root-layer/app/subsync
 WORKDIR /root-layer/
 COPY app/ /root-layer/app/
-WORKDIR /root-layer/app/subsync
-RUN pip3 install -r /root-layer/app/subsync/requirements.txt \
-	&& pip3 install . \
-	&& apk add tar
+#WORKDIR /root-layer/app/subsync
+#RUN pip3 install -r /root-layer/app/subsync/requirements.txt \
+#	&& pip3 install . \
+#	&& apk add tar
 	
 # add local files
 COPY root/ /root-layer/
