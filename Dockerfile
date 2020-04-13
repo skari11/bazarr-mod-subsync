@@ -2,7 +2,7 @@
 FROM lsiobase/alpine:3.11 as buildstage
 
 # add local files
-COPY root/ /
+COPY root/ /root-layer/
 
 ## Install dependencies ##
 RUN apk add --no-cache alsa-lib-dev \
