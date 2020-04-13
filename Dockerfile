@@ -23,7 +23,7 @@ RUN apk add --no-cache alsa-lib-dev \
     pip3 install --upgrade pip setuptools && \
     rm -r /root/.cache
 
-WORKDIR /build
+WORKDIR /root-layer/build
 
 RUN wget https://sourceforge.net/projects/cmusphinx/files/sphinxbase/5prealpha/sphinxbase-5prealpha.tar.gz/download -O sphinxbase.tar.gz \
 	&& tar -xzvf sphinxbase.tar.gz \
@@ -41,14 +41,14 @@ RUN wget https://sourceforge.net/projects/cmusphinx/files/pocketsphinx/5prealpha
 
 ENV FFMPEGVER https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz
 
-RUN mkdir /build/ffmpeg
-RUN cd /build \
+RUN mkdir /root-layer/build/ffmpeg
+RUN cd /root-layer/build \
 	&& wget "$FFMPEGVER" \
 	&& tar xf ffmpeg-release-amd64-static.tar.xz --directory ffmpeg/
 
-ENV FFMPEG_DIR /build/ffmpeg
-ENV SPHINXBASE_DIR /build/sphinxbase-5prealpha
-ENV POCKETSPHINX_DIR /build/pocketsphinx-5prealpha
+ENV FFMPEG_DIR /root-layer/build/ffmpeg
+ENV SPHINXBASE_DIR /root-layer/build/sphinxbase-5prealpha
+ENV POCKETSPHINX_DIR /root-layer/build/pocketsphinx-5prealpha
 ENV USE_PKG_CONFIG no
 
 RUN apk add --no-cache \
@@ -60,11 +60,11 @@ RUN apk add --no-cache \
 	
 
 ## Install Subsync ##
-RUN git clone -b '0.15' https://github.com/sc0ty/subsync.git /app/subsync
-WORKDIR /
+RUN git clone -b '0.15' https://github.com/sc0ty/subsync.git /root-layer/app/subsync
+WORKDIR /root-layer/
 COPY app/ /app/
-WORKDIR /app/subsync
-RUN pip3 install -r /app/subsync/requirements.txt \
+WORKDIR /root-layer/app/subsync
+RUN pip3 install -r /root-layer/app/subsync/requirements.txt \
 	&& pip3 install .
 	
 ## Single layer deployed image ##
