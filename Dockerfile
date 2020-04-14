@@ -9,17 +9,20 @@ RUN apk add --no-cache \
 WORKDIR /root-layer/build
 
 RUN wget https://sourceforge.net/projects/cmusphinx/files/sphinxbase/5prealpha/sphinxbase-5prealpha.tar.gz/download -O sphinxbase.tar.gz \
-	&& tar -xzvf sphinxbase.tar.gz
+	&& tar -xzvf sphinxbase.tar.gz \
+	&& rm sphinxbase.tar.gz
 
 RUN wget https://sourceforge.net/projects/cmusphinx/files/pocketsphinx/5prealpha/pocketsphinx-5prealpha.tar.gz/download -O pocketsphinx.tar.gz \
-	&& tar -xzvf pocketsphinx.tar.gz
+	&& tar -xzvf pocketsphinx.tar.gz \
+	&& rm pocketsphinx.tar.gz
 
 ENV FFMPEGVER https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz
 
 RUN mkdir /root-layer/build/ffmpeg
 RUN cd /root-layer/build \
 	&& wget "$FFMPEGVER" \
-	&& tar xf ffmpeg-release-amd64-static.tar.xz --directory ffmpeg/	
+	&& tar xf ffmpeg-release-amd64-static.tar.xz --directory ffmpeg/ \
+	&& rm ffmpeg-release-amd64-static.tar.xz
 
 ## Download Subsync ##
 RUN git clone -b '0.15' https://github.com/sc0ty/subsync.git /root-layer/app/subsync
