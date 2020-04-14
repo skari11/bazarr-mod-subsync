@@ -29,19 +29,13 @@ if [ ! -f /usr/bin/subsync ]; then
 	pip3 install --upgrade pip setuptools
 	rm -r /root/.cache
 
-	cd /build/sphinxbase-5prealpha
-	./configure --enable-fixed
-	make
-	make install
+	cd /build/sphinxbase && ./autogen.sh && make install 
 
-	cd /build/pocketsphinx-5prealpha
-	./configure
-	make
-	make install
+	cd /build/pocketsphinx && ./autogen.sh && make install
 
 	export FFMPEG_DIR=/build/ffmpeg
-	export SPHINXBASE_DIR=/build/sphinxbase-5prealpha
-	export POCKETSPHINX_DIR=/build/pocketsphinx-5prealpha
+	export SPHINXBASE_DIR=/build/sphinxbase
+	export POCKETSPHINX_DIR=/build/pocketsphinx
 	export USE_PKG_CONFIG=no
 
 	pip3 install /app/subsync/
