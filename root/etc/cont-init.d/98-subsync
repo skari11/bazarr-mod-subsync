@@ -45,4 +45,7 @@ if [ ! -f /usr/bin/subsync ]; then
 	export USE_PKG_CONFIG=no
 
 	pip3 install /app/subsync/
+	
+	rm -r /build/
+	rm -r /app/subsync/
 fi
