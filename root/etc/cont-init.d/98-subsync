@@ -33,7 +33,7 @@ cd /build/sphinxbase-5prealpha
 make
 make install
 
-cd /root-layer/build/pocketsphinx-5prealpha
+cd /build/pocketsphinx-5prealpha
 ./configure
 make
 make install
