@@ -32,6 +32,8 @@ if [ ! -f /usr/bin/subsync ]; then
 	cd /build/sphinxbase && ./autogen.sh && make install 
 
 	cd /build/pocketsphinx && ./autogen.sh && make install
+	
+	rm -R /build/
 
 	export FFMPEG_DIR=/build/ffmpeg
 	export SPHINXBASE_DIR=/build/sphinxbase
