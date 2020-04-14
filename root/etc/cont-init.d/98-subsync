@@ -3,5 +3,12 @@
 # permissions
 chown -R abc:abc \
 	/app/subsync
+	
+apk add --no-cache \
+	libffi-dev \
+	openssl-dev \
+	libgcc \
+	ffmpeg-dev \
+	py3-pybind11-dev
 
 pip3 install /app/subsync/
