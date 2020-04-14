@@ -10,5 +10,20 @@ apk add --no-cache \
 	libgcc \
 	ffmpeg-dev \
 	py3-pybind11-dev
+	
+cd /build/sphinxbase-5prealpha
+./configure --enable-fixed
+make
+make install
+
+cd /root-layer/build/pocketsphinx-5prealpha
+./configure
+make
+make install
+
+export FFMPEG_DIR=/build/ffmpeg
+export SPHINXBASE_DIR=/build/sphinxbase-5prealpha
+export POCKETSPHINX_DIR=/build/pocketsphinx-5prealpha
+export USE_PKG_CONFIG=no
 
 pip3 install /app/subsync/
