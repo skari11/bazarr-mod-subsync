@@ -14,13 +14,14 @@ apk add --no-cache \
 	automake \
 	autoconf \
 	bison \
-	build-base \ 
+	build-base
+apk add --no-cache \
 	curl \
 	libtool \
 	python3-dev \
 	swig \
 	tar \
-	xz && \
+	xz
 	
 python3 -m ensurepip
 rm -r /usr/lib/python*/ensurepip
