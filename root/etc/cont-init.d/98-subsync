@@ -9,7 +9,23 @@ apk add --no-cache \
 	openssl-dev \
 	libgcc \
 	ffmpeg-dev \
-	py3-pybind11-dev
+	py3-pybind11-dev \
+	alsa-lib-dev \
+	automake \
+	autoconf \
+	bison \
+	build-base \ 
+	curl \
+	libtool \
+	python3-dev \
+	swig \
+	tar \
+	xz && \
+	
+python3 -m ensurepip
+rm -r /usr/lib/python*/ensurepip
+pip3 install --upgrade pip setuptools
+rm -r /root/.cache
 	
 cd /build/sphinxbase-5prealpha
 ./configure --enable-fixed
