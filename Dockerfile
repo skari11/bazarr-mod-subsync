@@ -3,7 +3,8 @@ FROM lsiobase/alpine:3.11 as buildstage
 
 ## Install dependencies ##
 RUN apk add --no-cache \
-	wget
+	wget \
+	git
 
 WORKDIR /root-layer/build
 
